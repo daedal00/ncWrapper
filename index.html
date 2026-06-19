@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Function Console</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <button class="hamburger" aria-label="Open navigation">☰</button>
+          <div>
+            <p class="eyebrow">Developer Tools</p>
+            <h1>Lambda / Functions / <span id="functionName">handler</span></h1>
+          </div>
+        </div>
+        <div class="top-actions">
+          <label class="stealth-toggle" title="Hide practice metadata">
+            <input id="stealthMode" type="checkbox" checked />
+            <span>Focus mode</span>
+          </label>
+          <button id="openProblem" class="ghost">Open reference</button>
+          <button id="runTests" class="primary">Test</button>
+          <button id="submitProblem" class="orange">Save</button>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <aside class="nav-panel" aria-label="Function explorer">
+          <div class="panel-title">Function overview</div>
+          <div class="metric-grid">
+            <div><strong id="doneCount">0</strong><span>Saved</span></div>
+            <div><strong id="totalCount">0</strong><span>Functions</span></div>
+          </div>
+
+          <label class="field-label" for="categoryFilter">Runtime layer</label>
+          <select id="categoryFilter"></select>
+
+          <label class="field-label" for="difficultyFilter">Memory profile</label>
+          <select id="difficultyFilter">
+            <option value="all">All profiles</option>
+            <option value="Easy">128 MB</option>
+            <option value="Medium">512 MB</option>
+            <option value="Hard">1024 MB</option>
+          </select>
+
+          <label class="field-label" for="problemSearch">Resource search</label>
+          <input id="problemSearch" placeholder="Filter functions..." />
+
+          <div id="problemList" class="problem-list"></div>
+        </aside>
+
+        <section class="editor-area">
+          <div class="tabs">
+            <button class="tab active">index.js</button>
+            <button class="tab">template.yaml</button>
+            <button class="tab muted">README.md</button>
+          </div>
+
+          <div class="editor-toolbar">
+            <div class="status-pill"><span class="dot green"></span>Unsaved changes</div>
+            <div id="runtimeLabel">Runtime: Node.js 20.x</div>
+          </div>
+
+          <div class="code-frame">
+            <div id="lineNumbers" class="line-numbers" aria-hidden="true"></div>
+            <textarea id="codeEditor" spellcheck="false" aria-label="Code editor"></textarea>
+          </div>
+
+          <div class="terminal">
+            <div class="terminal-header">
+              <span>Execution results</span>
+              <button id="clearOutput" class="tiny">Clear</button>
+            </div>
+            <pre id="output">Ready. Choose a function and run Test.</pre>
+          </div>
+        </section>
+
+        <aside class="side-panel" aria-label="Configuration and results">
+          <div class="panel-card">
+            <div class="panel-title">Configuration</div>
+            <dl>
+              <dt>Handler</dt><dd id="handlerName">index.handler</dd>
+              <dt>Timeout</dt><dd>3 sec</dd>
+              <dt>Last save</dt><dd id="lastSaved">Never</dd>
+            </dl>
+          </div>
+
+          <div class="panel-card">
+            <div class="panel-title">Test events</div>
+            <div id="testCases" class="test-cases"></div>
+          </div>
+
+          <div class="panel-card">
+            <div class="panel-title">Deployment progress</div>
+            <div class="progress-bar"><span id="progressFill"></span></div>
+            <p id="progressText">0% complete</p>
+          </div>
+        </aside>
+      </main>
+    </div>
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
